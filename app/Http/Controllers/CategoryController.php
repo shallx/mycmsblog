@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\category;
 use App\Http\Requests\Categories\CreateCategoryRequest;
 use App\Http\Requests\Categories\UpdateCategoryRequest;
-use CreateCategoriesTable;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller

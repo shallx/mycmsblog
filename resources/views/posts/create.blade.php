@@ -46,6 +46,34 @@
                         @endforeach
                     @endif
                 </div>
+                @if(isset($tags))
+                <div class="form-group">
+                    <label for="tags[]" >Tags</label>
+                    <select name='tags[]' class="form-control tags-selector" multiple>
+                        @foreach ($tags as $tag)
+                            {{-- Working Formet Checkbox Version --}}
+                            {{-- <div class="checkbox">
+                                <label><input type="checkbox" value="{{$tag->id}}" name="tags[]"
+                                    @if (isset($post))
+                                        @if ($post->hasTag($tag->id))
+                                            checked
+                                        @endif
+                                    @endif
+                                    >{{$tag->name}}</label>
+                            </div>                             --}}
+                                <option value="{{$tag->id}}"
+                                    @if (isset($post))
+                                        @if ($post->hasTag($tag->id))
+                                            selected
+                                        @endif
+                                    @endif
+                                    >{{$tag->name}}</option>
+                        @endforeach                            
+                    </select>
+
+                </div>
+                @endif
+
                 @if(isset($post))
                     <div class="form-group">
                         <img src="{{asset('storage/' . $post->image)}}" alt="" style="width:100%">
@@ -74,6 +102,10 @@
 
     flatpickr("#published_at", {
         enableTime : true
+    });
+
+    $(document).ready(function(){
+        $('.tags-selector').select2();
     });
 </script>
 @endsection

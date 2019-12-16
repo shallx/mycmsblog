@@ -42,22 +42,19 @@
                             @else
                             <form action="{{route('restore-post', $post->id)}}" method="POST">
                                 @csrf
-                                @method('put')
+                                @method('PUT')
                                 <button type="submit" class="btn btn-success btn-small text-white float-left"
-                                    href="{{route('posts.edit', $post->id)}}">Restore</a>
+                                    href="{{route('posts.edit', $post->id)}}">Restore</button>
                             </form>
                             @endif
-                            <div class="float-left">
-                                <form action="{{route('posts.destroy', $post->id)}}" method="POST" id="deleteForm"
+                                <form action="{{route('posts.destroy', $post->id)}}" method="POST"
                                     class="form-inline">
                                     @csrf
-                                    @method('DELETE')
+                                    @method('delete')
                                     <button type="submit" class="btn btn-danger btn-small text-white">
                                         {{$post->trashed() ?'Delete': 'Trash'}}
-                                        </a>
+                                        </button>
                                 </form>
-
-                            </div>
                         </div>
                     </td>
                 </tr>
